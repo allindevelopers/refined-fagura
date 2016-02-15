@@ -1,0 +1,10 @@
+a.timeline-chosen-answer {
+	border: 2px solid #2cbe4e !important;
+}
+
+a.timeline-chosen-answer .timeline-comment-header-text {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: none;
+}

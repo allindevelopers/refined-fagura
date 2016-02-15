@@ -1,0 +1,18 @@
+[data-rgh-whitespace] {
+	position: relative;
+	line-height: 1em;
+}
+
+[data-rgh-whitespace]::before {
+	content: attr(data-rgh-whitespace);
+	pointer-events: none;
+	user-select: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 25%;
+}
+
+[data-rgh-whitespace^='→']::before {
+	letter-spacing: calc((var(--tab-size, 4) * 1ch) - 1ch);
+}

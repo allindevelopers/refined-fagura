@@ -1,0 +1,27 @@
+/* Adjust spacing of empty sections */
+.discussion-sidebar-item.rgh-clean-sidebar {
+	margin-bottom: -5px;
+}
+
+/* Align sidebar to the top */
+.discussion-sidebar-item:first-child {
+	padding-top: 0;
+}
+
+.sidebar-labels .sidebar-labels-style:first-child {
+	margin-top: 0;
+}
+
+/* Move message under the `Unsubscribe` button above the button */
+.thread-subscription-status {
+	display: flex;
+	flex-direction: column;
+}
+
+form.thread-subscribe-form { /* `form` excludes the header */
+	order: 1;
+}
+
+.thread-subscription-status .reason {
+	margin: 0 0 10px !important;
+}

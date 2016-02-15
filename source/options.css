@@ -1,0 +1,94 @@
+:root {
+	--github-red: #cb2431;
+	min-width: 550px;
+}
+
+p {
+	margin-top: 0;
+}
+
+:root [name='customCSS'],
+:root [name='personalToken'] {
+	font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+	font-size: 11px;
+	line-height: 1.5;
+}
+
+[name='personalToken'] {
+	width: 20em !important; /* https://github.com/sindresorhus/refined-github/issues/1374#issuecomment-397906701 */
+}
+
+[name='personalToken']:invalid {
+	border-color: var(--github-red) !important;
+}
+
+.feature:not([hidden]) {
+	display: flex;
+}
+
+.js-features input[type='checkbox'] {
+	flex-shrink: 0;
+}
+
+.js-features input[type='checkbox']:not(*:root) {
+	/* Selector for Chrome only http://browserhacks.com/#ch */
+	margin-inline-end: 0.6em;
+	margin-top: 2px;
+}
+
+.js-features :not(:checked) + .info .feature-name {
+	text-decoration: line-through;
+}
+
+.js-features .description {
+	opacity: 80%;
+}
+
+.js-features a {
+	font-size: 0.9em;
+}
+
+.js-features a:first-of-type {
+	margin-left: 0.6em;
+}
+
+.js-features .info {
+	flex-grow: 1;
+}
+
+.feature-new .feature-name::after {
+	display: inline-block; /* Avoids the strikethrough on disabled features */
+	content: 'New';
+	font-size: 1em;
+	border: 1px solid;
+	border-radius: 0.2em;
+	padding: 0 0.3em;
+	margin-left: 0.8em;
+	text-transform: uppercase;
+	color: var(--github-red);
+}
+
+.sr-only {
+	display: none;
+}
+
+#debugging {
+	--background:
+		repeating-linear-gradient(
+			45deg,
+			var(--github-red),
+			var(--github-red) 7px,
+			transparent 7px,
+			transparent 14px
+		) no-repeat;
+	position: relative;
+	padding: 1em 0;
+	margin-bottom: 1em;
+	background:
+		var(--background) top / 100% 3px,
+		var(--background) bottom / 100% 3px;
+}
+
+#debugging p:last-child {
+	margin-bottom: 0;
+}
