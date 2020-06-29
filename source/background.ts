@@ -17,7 +17,7 @@ browser.runtime.onMessage.addListener((message, {tab}) => {
 // Give the browserAction a reason to exist other than "Enable RGH on this domain"
 browser.browserAction.onClicked.addListener(() => {
 	void browser.tabs.create({
-		url: 'https://github.com'
+		url: 'http://app.fagura.com'
 	});
 });
 
@@ -38,3 +38,23 @@ browser.runtime.onInstalled.addListener(async ({reason}) => {
 
 // GitHub Enterprise support
 addDomainPermissionToggle();
+
+window.setInterval(async () => {
+	const { value: accessToken } = await browser.cookies.get({
+		url: 'https://app.fagura.com',
+		name: 'access_token',
+	})
+
+	const loans = await fetch("https://api.app.fagura.com/api/investor/loan-applications?relations=loan", {
+		"headers": {
+		  "authorization": `Bearer ${accessToken}`,
+		}
+	}).then(res => res.json());
+
+	browser.notifications.create({
+		type: 'basic',
+		title: "Fagura new loans",
+		message: `On fagura there is ${loans.length} pending loans`,
+		iconUrl: browser.runtime.getURL("icon.png"),
+	})
+}, 60000)
